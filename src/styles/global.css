@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg: 255 255 255;
+    --color-text: 0 0 0;
+    --color-muted: 107 114 128;
+  }
+
+  .dark {
+    --color-bg: 0 0 0;
+    --color-text: 255 255 255;
+    --color-muted: 156 163 175;
+  }
+
+  * {
+    @apply transition-colors duration-300;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-white dark:bg-black text-black dark:text-white antialiased;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
