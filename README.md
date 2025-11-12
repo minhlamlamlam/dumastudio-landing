@@ -78,8 +78,7 @@ TTL: Automatic
 ## 📝 Mentions légales
 
 - TVA BE1028.727.857
-- Rue Groeselenberg 184, 1180 Uccle, Belgique
-- Contact : support@duma.wtf
+- Contact : support@dumastudio.app
 
 ## 📄 License
 
