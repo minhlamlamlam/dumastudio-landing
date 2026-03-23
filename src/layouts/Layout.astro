@@ -5,10 +5,13 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description: string;
+  lang?: 'fr' | 'en';
 }
 
-const { title, description } = Astro.props;
+const { title, description, lang = 'fr' } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const altHref = lang === 'fr' ? '/en' : '/';
+const altLabel = lang === 'fr' ? 'EN' : 'FR';
 ---
 
 <!doctype html>
@@ -44,6 +47,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   </head>
   <body class="min-h-screen">
     <DarkModeToggle />
+    <a
+      href={altHref}
+      class="fixed top-6 right-20 p-3 rounded-full bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-800 transition-all duration-300 z-50 w-11 h-11 flex items-center justify-center font-semibold text-sm text-gray-800 dark:text-gray-200 backdrop-blur-sm"
+      aria-label={`Switch to ${altLabel}`}
+    >
+      {altLabel}
+    </a>
     <slot />
   </body>
 </html>
