@@ -1,27 +1,27 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
 
 const projects = [
   {
     name: 'Ça Goutte',
     url: 'https://www.cagoutte.app',
-    description: 'Assistant IA pour gérer votre goutte. Base de 1000+ aliments, suivi des crises, export médical.',
+    description: 'AI assistant to manage your gout. Database of 1000+ foods, crisis tracking, medical export.',
     logo: '/cagoutte-logo-final.png',
-    tagline: 'Suivi de la goutte avec IA',
+    tagline: 'AI-powered gout tracking',
   },
   {
     name: 'Resto1.Click',
     url: 'https://resto1.click',
-    description: 'Créateur de sites web professionnels pour restaurants — publié en 10 minutes, sans coder.',
+    description: 'Professional website builder for restaurants — published in 10 minutes, no coding required.',
     logo: '/resto1click-logo.png',
-    tagline: 'La plateforme pensée uniquement pour les restaurateurs',
+    tagline: 'The platform built exclusively for restaurateurs',
   },
 ];
 ---
 
 <Layout
-  title="Duma Studio - Développement d'applications mobile & web"
-  description="Duma Studio crée des applications mobile et web innovantes. Découvrez nos projets : Ça Goutte (assistant IA santé)."
+  title="Duma Studio - Mobile & Web Application Development"
+  description="Duma Studio builds innovative mobile and web applications. Discover our projects: Ça Goutte (AI health assistant), Resto1.Click (restaurant website builder)."
 >
   <main class="relative">
     <!-- Hero Section -->
@@ -58,11 +58,11 @@ const projects = [
         <p
           class="text-xl md:text-2xl lg:text-3xl text-gray-600 dark:text-gray-400 font-light text-balance"
         >
-          Développement d'applications mobile & web
+          Mobile & Web Application Development
         </p>
         <p class="text-base md:text-lg text-gray-500 dark:text-gray-500 max-w-2xl mx-auto">
-          Nous créons des expériences numériques minimalistes et performantes,
-          pensées pour l'utilisateur.
+          We craft minimalist, high-performance digital experiences
+          designed with the user in mind.
         </p>
       </div>
 
@@ -89,7 +89,7 @@ const projects = [
         <h2
           class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-16 opacity-0 scroll-reveal"
         >
-          Nos Projets
+          Our Projects
         </h2>
 
         <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
@@ -130,7 +130,7 @@ const projects = [
 
                   {/* Arrow icon */}
                   <div class="mt-6 flex items-center justify-center text-accent opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <span class="mr-2">Découvrir</span>
+                    <span class="mr-2">Discover</span>
                     <svg
                       class="w-5 h-5 transform group-hover:translate-x-2 transition-transform"
                       fill="none"
@@ -162,7 +162,7 @@ const projects = [
             <p class="font-semibold text-black dark:text-white mb-3">
               Duma Studio
             </p>
-            <p>TVA BE1028.727.857</p>
+            <p>VAT BE1028.727.857</p>
           </div>
 
           <!-- Contact -->
@@ -181,7 +181,7 @@ const projects = [
 
         <!-- Copyright -->
         <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800 text-center text-sm text-gray-500">
-          <p>&copy; {new Date().getFullYear()} Duma Studio. Tous droits réservés.</p>
+          <p>&copy; {new Date().getFullYear()} Duma Studio. All rights reserved.</p>
         </div>
       </div>
     </footer>
