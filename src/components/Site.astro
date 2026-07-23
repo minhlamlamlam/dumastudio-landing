@@ -25,7 +25,6 @@ interface Strings {
   ctaTitle1: string;
   ctaTitle2: string;
   ctaText: string;
-  ctaBtn: string;
   say: string;
   work: string;
 }
@@ -107,7 +106,6 @@ const { lang, altHref, altLabel, t } = Astro.props;
       <span class="cta-kicker">{t.ctaKicker}</span>
       <h2>{t.ctaTitle1}<br>{t.ctaTitle2}<span class="dot">.</span></h2>
       <p>{t.ctaText}</p>
-      <a href="https://www.dumastudio.app/" target="_blank" rel="noopener" class="btn-lime">{t.ctaBtn} &rarr;</a>
     </div>
   </section>
 
