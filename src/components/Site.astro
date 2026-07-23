@@ -49,7 +49,6 @@ const { lang, altHref, altLabel, t } = Astro.props;
     <nav class="nav-links" aria-label={lang === 'fr' ? 'Navigation principale' : 'Main navigation'}>
       <a href="#work" class="nav-link">{t.work}</a>
       <a href={altHref} class="nav-lang" aria-label={`Switch to ${altLabel}`}>{altLabel}</a>
-      <a href="https://www.dumastudio.app/" target="_blank" rel="noopener" class="btn-lime">{t.say}</a>
     </nav>
   </header>
 
@@ -120,7 +119,7 @@ const { lang, altHref, altLabel, t } = Astro.props;
       <div class="strip s3">dumastudio.app</div>
     </div>
     <div class="foot-legal">
-      <span>&copy; {new Date().getFullYear()} DU&nbsp;MA APP&nbsp;STUDIO &middot; TVA BE1028.727.857</span>
+      <span>&copy; {new Date().getFullYear()} DU&nbsp;MA APP&nbsp;STUDIO &middot; TVA BE1028.727.857 &middot; <a href="mailto:support@dumastudio.app" class="foot-mail">support@dumastudio.app</a></span>
       <span>APPS&nbsp;WITH&nbsp;ATTITUDE.</span>
     </div>
   </footer>
@@ -244,6 +243,8 @@ const { lang, altHref, altLabel, t } = Astro.props;
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
     font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.12em; color: #8FA398;
   }
+  .foot-mail { color: #B6F03A; transition: color .18s ease; }
+  .foot-mail:hover { color: #cbf76a; }
 
   ::selection { background: #B6F03A; color: #0D140F; }
 
