@@ -1,254 +1,70 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Site from '../components/Site.astro';
 
-const projects = [
-  {
-    name: 'Ça Goutte',
-    url: 'https://www.cagoutte.app',
-    description: 'Assistant IA pour gérer votre goutte. Base de 1000+ aliments, suivi des crises, export médical.',
-    logo: '/cagoutte-logo-final.png',
-    tagline: 'Suivi de la goutte avec IA',
-  },
-  {
-    name: 'Resto1.Click',
-    url: 'https://resto1.click',
-    description: 'Créateur de sites web professionnels pour restaurants — publié en 10 minutes, sans coder.',
-    logo: '/resto1click-logo.png',
-    tagline: 'La plateforme pensée uniquement pour les restaurateurs',
-  },
-];
+const t = {
+  badge: 'DU MA · APP STUDIO · EST. 2024',
+  h1a: 'APPS WITH',
+  h1b: 'ATTITUDE',
+  intro:
+    "Je suis un vibe coder solo. Ce n'est pas un pitch deck — c'est ce que je ship vraiment, pour le plaisir. Une web app, une app mobile et un jeu mobile.",
+  pills: ['WEB APP', 'APP MOBILE', 'JEU MOBILE'],
+  workTitle: 'PROJETS SÉLECTIONNÉS',
+  workMeta: '2024–2026  /  (03)',
+  ctaKicker: 'HECHO PARA CREAR.',
+  ctaTitle1: 'MADE TO',
+  ctaTitle2: 'CREATE',
+  ctaText:
+    "Pas de clients, pas de réunions roadmap. Juste des apps faites comme je veux — et c'est ici qu'elles vivent.",
+  ctaBtn: 'dumastudio.app',
+  say: 'CONTACT',
+  work: 'PROJETS',
+  projects: [
+    {
+      n: '01',
+      name: 'Resto1Click',
+      kind: 'WEB APP',
+      accent: '#B6F03A',
+      href: 'https://resto1.click',
+      visit: 'VISITER resto1.click',
+      img: 'https://resto1.click/og-image.jpg',
+      desc:
+        'Crée le site de ton restaurant en moins de 10 minutes. Sans code, sans agence — depuis ton téléphone, en ligne sur Google le jour même.',
+      tags: ['SETUP 10 MIN', 'PRÊT SEO', 'MENU QR'],
+    },
+    {
+      n: '02',
+      name: 'Ça Goutte!',
+      kind: 'APP MOBILE',
+      accent: '#B39CF0',
+      href: 'https://www.cagoutte.app',
+      visit: 'VISITER cagoutte.app',
+      img: 'https://www.cagoutte.app/images/rebrand/screen-journal.webp',
+      imgPos: 'top center',
+      desc:
+        'Suivi de la goutte et des purines avec un coach IA intégré. Note tes repas, ton eau et tes crises — et pose-lui tes questions avant de manger.',
+      tags: ['COACH IA', '1000+ ALIMENTS', 'iOS + ANDROID'],
+    },
+    {
+      n: '03',
+      name: 'Convoi',
+      kind: 'JEU MOBILE',
+      accent: '#5CD1E6',
+      href: 'https://www.convoi.games',
+      visit: 'VISITER convoi.games',
+      img: 'https://www.convoi.games/sans-avec-banner.jpg',
+      desc:
+        'Le jeu des passagers sur l’autoroute. Repère les plaques hors ligne, radar les vraies voitures autour de toi, puis défie-les en duel.',
+      tags: ['MODE HORS LIGNE', 'RADAR LIVE', 'DUELS'],
+    },
+  ],
+};
 ---
 
 <Layout
-  title="Duma Studio - Développement d'applications mobile & web"
-  description="Duma Studio crée des applications mobile et web innovantes. Découvrez nos projets : Ça Goutte (assistant IA santé)."
+  title="DU MA App Studio — Apps with attitude | Web, mobile & jeux"
+  description="Studio d'apps indépendant. Resto1Click (web app pour restaurants), Ça Goutte (app santé avec coach IA) et Convoi (jeu mobile) — des apps faites avec attitude."
   lang="fr"
 >
-  <main class="relative">
-    <!-- Hero Section -->
-    <section
-      class="min-h-screen flex flex-col items-center justify-center px-6 py-20 relative overflow-hidden"
-    >
-      <!-- Animated gradient background -->
-      <div
-        class="absolute inset-0 -z-10 opacity-30 dark:opacity-20"
-        style="background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.3) 0%, transparent 50%);"
-      >
-      </div>
-
-      <!-- Logo with fade-in animation -->
-      <div class="mb-12 animate-fade-in">
-        <img
-          src="/dumastudio-logo-transp.png"
-          alt="Duma Studio Logo"
-          class="w-48 h-48 md:w-64 md:h-64 object-contain drop-shadow-2xl transition-transform duration-500 hover:scale-105"
-          width="256"
-          height="256"
-          loading="eager"
-          decoding="async"
-        />
-      </div>
-
-      <!-- Hero text -->
-      <div class="text-center max-w-4xl space-y-8 animate-fade-in-up">
-        <h1
-          class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-balance"
-        >
-          Duma Studio
-        </h1>
-        <p
-          class="text-xl md:text-2xl lg:text-3xl text-gray-600 dark:text-gray-400 font-light text-balance"
-        >
-          Développement d'applications mobile & web
-        </p>
-        <p class="text-base md:text-lg text-gray-500 dark:text-gray-500 max-w-2xl mx-auto">
-          Nous créons des expériences numériques minimalistes et performantes,
-          pensées pour l'utilisateur.
-        </p>
-      </div>
-
-      <!-- Scroll indicator -->
-      <div class="absolute bottom-10 animate-bounce">
-        <svg
-          class="w-6 h-6 text-gray-400"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-        </svg>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="min-h-screen flex items-center justify-center px-6 py-20" id="projects">
-      <div class="max-w-6xl w-full">
-        <h2
-          class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-16 opacity-0 scroll-reveal"
-        >
-          Nos Projets
-        </h2>
-
-        <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
-          {
-            projects.map((project, index) => (
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="group block opacity-0 scroll-reveal"
-                style={`animation-delay: ${index * 150}ms`}
-              >
-                <div class="relative p-8 md:p-12 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-black/50 backdrop-blur-sm transition-all duration-500 hover:scale-105 hover:border-accent hover:shadow-2xl hover:shadow-accent/20">
-                  {/* Hover gradient effect */}
-                  <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/0 to-accent/0 group-hover:from-accent/5 group-hover:to-accent/10 transition-all duration-500 -z-10" />
-
-                  {/* Logo */}
-                  <div class="mb-6 flex items-center justify-center">
-                    <img
-                      src={project.logo}
-                      alt={`${project.name} logo`}
-                      class="h-16 w-auto object-contain transition-transform duration-500 group-hover:scale-110"
-                      loading="lazy"
-                    />
-                  </div>
-
-                  <h3 class="text-2xl md:text-3xl font-bold mb-2 group-hover:text-accent transition-colors text-center">
-                    {project.name}
-                  </h3>
-
-                  <p class="text-sm text-gray-500 dark:text-gray-500 mb-4 text-center font-medium">
-                    {project.tagline}
-                  </p>
-
-                  <p class="text-gray-600 dark:text-gray-400 text-base text-center">
-                    {project.description}
-                  </p>
-
-                  {/* Arrow icon */}
-                  <div class="mt-6 flex items-center justify-center text-accent opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <span class="mr-2">Découvrir</span>
-                    <svg
-                      class="w-5 h-5 transform group-hover:translate-x-2 transition-transform"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </a>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer with legal information -->
-    <footer class="border-t border-gray-200 dark:border-gray-800 py-12 px-6">
-      <div class="max-w-6xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-8 text-sm text-gray-600 dark:text-gray-400">
-          <!-- Company info -->
-          <div class="space-y-2">
-            <p class="font-semibold text-black dark:text-white mb-3">
-              Duma Studio
-            </p>
-            <p>TVA BE1028.727.857</p>
-          </div>
-
-          <!-- Contact -->
-          <div class="space-y-2">
-            <p class="font-semibold text-black dark:text-white mb-3">Contact</p>
-            <p>
-              <a
-                href="mailto:support@dumastudio.app"
-                class="hover:text-accent transition-colors"
-              >
-                support@dumastudio.app
-              </a>
-            </p>
-          </div>
-        </div>
-
-        <!-- Copyright -->
-        <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800 text-center text-sm text-gray-500">
-          <p>&copy; {new Date().getFullYear()} Duma Studio. Tous droits réservés.</p>
-        </div>
-      </div>
-    </footer>
-  </main>
+  <Site lang="fr" altHref="/en" altLabel="EN" t={t} />
 </Layout>
-
-<style>
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes fade-in-up {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fade-in {
-    animation: fade-in 1s ease-out forwards;
-  }
-
-  .animate-fade-in-up {
-    animation: fade-in-up 1s ease-out 0.3s forwards;
-    opacity: 0;
-  }
-
-  .scroll-reveal {
-    animation: fade-in-up 0.8s ease-out forwards;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    * {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
-  }
-</style>
-
-<script>
-  // Intersection Observer for scroll animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px',
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate-fade-in-up');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  document.querySelectorAll('.scroll-reveal').forEach((el) => {
-    observer.observe(el);
-  });
-</script>

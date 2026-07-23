@@ -1,5 +1,4 @@
 ---
-import DarkModeToggle from '../components/DarkModeToggle.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -10,50 +9,131 @@ interface Props {
 
 const { title, description, lang = 'fr' } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const altHref = lang === 'fr' ? '/en' : '/';
-const altLabel = lang === 'fr' ? 'EN' : 'FR';
+const ogImage = new URL('/dumastudio-logo-transp.png', Astro.site);
+const frURL = new URL('/', Astro.site);
+const enURL = new URL('/en', Astro.site);
+
+// Structured data — helps search engines & AI answer engines (GEO) understand the site.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://duma.studio/#org',
+      name: 'DU MA App Studio',
+      alternateName: 'Duma Studio',
+      url: 'https://duma.studio/',
+      logo: ogImage.toString(),
+      email: 'support@dumastudio.app',
+      foundingDate: '2024',
+      slogan: 'Apps with attitude.',
+      description:
+        'Solo indie app studio building a web app, a mobile app and a mobile game — shipped for fun.',
+      sameAs: ['https://www.dumastudio.app/'],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://duma.studio/#website',
+      url: 'https://duma.studio/',
+      name: 'DU MA App Studio',
+      inLanguage: lang,
+      publisher: { '@id': 'https://duma.studio/#org' },
+    },
+    {
+      '@type': 'CollectionPage',
+      '@id': canonicalURL.toString(),
+      url: canonicalURL.toString(),
+      name: title,
+      description,
+      inLanguage: lang,
+      isPartOf: { '@id': 'https://duma.studio/#website' },
+      about: { '@id': 'https://duma.studio/#org' },
+      hasPart: [
+        {
+          '@type': 'SoftwareApplication',
+          name: 'Resto1Click',
+          applicationCategory: 'BusinessApplication',
+          operatingSystem: 'Web',
+          url: 'https://resto1.click',
+          description:
+            'Build a restaurant website in under 10 minutes — no code, no agency, live on Google the same day.',
+        },
+        {
+          '@type': 'MobileApplication',
+          name: 'Ça Goutte!',
+          applicationCategory: 'HealthApplication',
+          operatingSystem: 'iOS, Android',
+          url: 'https://www.cagoutte.app',
+          description:
+            'Gout and purine tracking with a built-in AI coach — log meals, water and flare-ups.',
+        },
+        {
+          '@type': 'MobileApplication',
+          name: 'Convoi',
+          applicationCategory: 'GameApplication',
+          operatingSystem: 'iOS, Android',
+          url: 'https://www.convoi.games',
+          description:
+            "The highway passengers' game — spot plates offline, radar the cars around you, challenge them to a duel.",
+        },
+      ],
+    },
+  ],
+};
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/dumastudio-logo-transp.png" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#0E1512" />
 
     <!-- Primary Meta Tags -->
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
+    <meta name="author" content="DU MA App Studio" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="keywords" content="Duma Studio, DU MA, app studio, indie apps, Resto1Click, Ça Goutte, Convoi, mobile app, web app, mobile game" />
     <link rel="canonical" href={canonicalURL} />
+
+    <!-- Language alternates -->
+    <link rel="alternate" hreflang="fr" href={frURL} />
+    <link rel="alternate" hreflang="en" href={enURL} />
+    <link rel="alternate" hreflang="x-default" href={frURL} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="DU MA App Studio" />
+    <meta property="og:locale" content={lang === 'fr' ? 'fr_FR' : 'en_US'} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL('/dumastudio-logo-transp.png', Astro.site)} />
+    <meta property="og:image" content={ogImage} />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL('/dumastudio-logo-transp.png', Astro.site)} />
+    <meta property="twitter:image" content={ogImage} />
 
-    <!-- Preload critical assets -->
-    <link rel="preload" href="/dumastudio-logo-transp.png" as="image" />
+    <link rel="preload" href="/duma-white.png" as="image" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
-  <body class="min-h-screen">
-    <DarkModeToggle />
-    <a
-      href={altHref}
-      class="fixed top-6 right-20 p-3 rounded-full bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-800 transition-all duration-300 z-50 w-11 h-11 flex items-center justify-center font-semibold text-sm text-gray-800 dark:text-gray-200 backdrop-blur-sm"
-      aria-label={`Switch to ${altLabel}`}
-    >
-      {altLabel}
-    </a>
+  <body>
     <slot />
   </body>
 </html>

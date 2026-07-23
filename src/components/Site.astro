@@ -1,0 +1,259 @@
+---
+interface Project {
+  n: string;
+  name: string;
+  kind: string;
+  accent: string;
+  href: string;
+  visit: string;
+  img: string;
+  imgPos?: string;
+  desc: string;
+  tags: string[];
+}
+
+interface Strings {
+  badge: string;
+  h1a: string;
+  h1b: string;
+  intro: string;
+  pills: string[];
+  workTitle: string;
+  workMeta: string;
+  projects: Project[];
+  ctaKicker: string;
+  ctaTitle1: string;
+  ctaTitle2: string;
+  ctaText: string;
+  ctaBtn: string;
+  say: string;
+  work: string;
+}
+
+interface Props {
+  lang: 'fr' | 'en';
+  altHref: string;
+  altLabel: string;
+  t: Strings;
+}
+
+const { lang, altHref, altLabel, t } = Astro.props;
+---
+
+<div class="duma">
+  <header class="nav">
+    <a href={lang === 'fr' ? '/' : '/en'} class="brand" aria-label="DU MA — App Studio">
+      <img src="/duma-white.png" alt="DU MA App Studio" width="120" height="38" />
+      <span class="brand-tag">APP&nbsp;STUDIO</span>
+    </a>
+    <nav class="nav-links" aria-label={lang === 'fr' ? 'Navigation principale' : 'Main navigation'}>
+      <a href="#work" class="nav-link">{t.work}</a>
+      <a href={altHref} class="nav-lang" aria-label={`Switch to ${altLabel}`}>{altLabel}</a>
+      <a href="https://www.dumastudio.app/" target="_blank" rel="noopener" class="btn-lime">{t.say}</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="panther" aria-hidden="true"></div>
+    <div class="hero-in">
+      <span class="badge">{t.badge}</span>
+      <h1>{t.h1a}<br>{t.h1b}<span class="dot">.</span></h1>
+      <p class="lead">{t.intro}</p>
+      <div class="pills">
+        <span class="pill pill-lime">{t.pills[0]}</span>
+        <span class="pill pill-purple">{t.pills[1]}</span>
+        <span class="pill pill-cyan">{t.pills[2]}</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>MADE&nbsp;TO&nbsp;CREATE. &nbsp;&bull;&nbsp; APPS&nbsp;WITH&nbsp;ATTITUDE. &nbsp;&bull;&nbsp; HECHO&nbsp;PARA&nbsp;CREAR. &nbsp;&bull;&nbsp; SHIPPED&nbsp;FOR&nbsp;FUN. &nbsp;&bull;&nbsp; MADE&nbsp;TO&nbsp;CREATE. &nbsp;&bull;&nbsp; APPS&nbsp;WITH&nbsp;ATTITUDE. &nbsp;&bull;&nbsp; HECHO&nbsp;PARA&nbsp;CREAR. &nbsp;&bull;&nbsp; SHIPPED&nbsp;FOR&nbsp;FUN. &nbsp;&bull;&nbsp; </span>
+    </div>
+  </div>
+
+  <section id="work" class="work">
+    <div class="work-head">
+      <h2>{t.workTitle}</h2>
+      <span class="work-meta">{t.workMeta}</span>
+    </div>
+    <div class="grid">
+      {t.projects.map((p) => (
+        <article class="card" style={`--c:${p.accent}`}>
+          <a href={p.href} target="_blank" rel="noopener" class="card-link">
+            <div class="card-media">
+              <img src={p.img} alt={p.name} loading="lazy" decoding="async" style={p.imgPos ? `object-position:${p.imgPos}` : ''} />
+              <span class="kind">{p.kind}</span>
+            </div>
+            <div class="card-body">
+              <div class="card-title">
+                <span class="num">{p.n}</span>
+                <h3>{p.name}</h3>
+              </div>
+              <p class="card-desc">{p.desc}</p>
+              <div class="tags">
+                {p.tags.map((tag) => <span class="tag">{tag}</span>)}
+              </div>
+              <span class="visit">{p.visit} &rarr;</span>
+            </div>
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="cta-box">
+      <span class="cta-kicker">{t.ctaKicker}</span>
+      <h2>{t.ctaTitle1}<br>{t.ctaTitle2}<span class="dot">.</span></h2>
+      <p>{t.ctaText}</p>
+      <a href="https://www.dumastudio.app/" target="_blank" rel="noopener" class="btn-lime">{t.ctaBtn} &rarr;</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot-strips">
+      <div class="strip s0">DU&nbsp;MA</div>
+      <div class="strip s1">APP&nbsp;STUDIO</div>
+      <div class="strip s2">EST.&nbsp;2024</div>
+      <div class="strip s3">dumastudio.app</div>
+    </div>
+    <div class="foot-legal">
+      <span>&copy; {new Date().getFullYear()} DU&nbsp;MA APP&nbsp;STUDIO &middot; TVA BE1028.727.857</span>
+      <span>APPS&nbsp;WITH&nbsp;ATTITUDE.</span>
+    </div>
+  </footer>
+</div>
+
+<style>
+  .duma {
+    background: #0E1512;
+    color: #F3F1EA;
+    font-family: Archivo, -apple-system, BlinkMacSystemFont, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  .duma h1, .duma h2, .duma h3, .duma p { margin: 0; }
+  .duma a { color: inherit; text-decoration: none; }
+  .dot { color: #B6F03A; }
+
+  .nav {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 26px 40px;
+  }
+  .brand { display: flex; align-items: center; gap: 16px; }
+  .brand img { height: 38px; width: auto; display: block; }
+  .brand-tag { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.3em; color: #8FA398; }
+  .nav-links { display: flex; align-items: center; gap: 24px; font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.16em; }
+  .nav-link { color: #F3F1EA; transition: color .18s ease; }
+  .nav-link:hover { color: #B6F03A; }
+  .nav-lang { color: #8FA398; border: 1px solid #26362E; padding: 8px 12px; border-radius: 999px; transition: color .18s, border-color .18s; }
+  .nav-lang:hover { color: #B6F03A; border-color: #B6F03A; }
+  .btn-lime {
+    color: #0D140F; background: #B6F03A; padding: 11px 20px;
+    border-radius: 999px; font-weight: 700; font-family: 'Space Mono', monospace;
+    font-size: 12px; letter-spacing: 0.16em; transition: background .18s ease;
+  }
+  .btn-lime:hover { background: #cbf76a; }
+
+  .hero { position: relative; max-width: 1280px; margin: 0 auto; padding: 70px 40px 96px; overflow: hidden; }
+  .panther {
+    position: absolute; right: 0; top: 20px; width: 560px; height: 470px;
+    background: #B39CF0; opacity: 0.14;
+    -webkit-mask: url(/panther.png) no-repeat right center; -webkit-mask-size: contain;
+    mask: url(/panther.png) no-repeat right center; mask-size: contain;
+    pointer-events: none;
+  }
+  .hero-in { position: relative; }
+  .badge {
+    display: inline-block; font-family: 'Space Mono', monospace; font-size: 12px;
+    letter-spacing: 0.24em; color: #8FA398; border: 1px solid #26362E;
+    padding: 9px 16px; border-radius: 999px; margin-bottom: 34px;
+  }
+  .hero h1 { font-size: clamp(56px, 9.5vw, 132px); font-weight: 900; letter-spacing: -0.03em; line-height: 0.88; }
+  .lead { font-size: clamp(17px, 2.1vw, 21px); line-height: 1.55; color: #8FA398; max-width: 560px; margin: 32px 0 40px; }
+  .pills { display: flex; gap: 12px; flex-wrap: wrap; }
+  .pill {
+    font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700;
+    letter-spacing: 0.14em; color: #F3F1EA; padding: 11px 18px; border-radius: 999px; border: 1.5px solid;
+  }
+  .pill-lime { border-color: #B6F03A; }
+  .pill-purple { border-color: #B39CF0; }
+  .pill-cyan { border-color: #5CD1E6; }
+
+  .marquee { border-top: 1px solid #26362E; border-bottom: 1px solid #26362E; background: #B6F03A; overflow: hidden; white-space: nowrap; }
+  .marquee-track {
+    display: inline-block; animation: duma-marquee 26s linear infinite;
+    font-family: 'Space Mono', monospace; font-weight: 700; font-size: 15px;
+    letter-spacing: 0.14em; color: #0D140F; padding: 16px 0;
+  }
+  @keyframes duma-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  .work { max-width: 1280px; margin: 0 auto; padding: 80px 40px 40px; }
+  .work-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 34px; flex-wrap: wrap; gap: 10px; }
+  .work-head h2 { font-size: clamp(30px, 4vw, 46px); font-weight: 900; letter-spacing: -0.02em; }
+  .work-meta { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.22em; color: #8FA398; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+
+  .card { --c: #B6F03A; }
+  .card-link {
+    display: flex; flex-direction: column; background: #14201B;
+    border: 1px solid #26362E; border-radius: 20px; overflow: hidden;
+    color: #F3F1EA; transition: transform .18s ease, border-color .18s ease; height: 100%;
+  }
+  .card-link:hover { transform: translateY(-6px); border-color: var(--c); }
+  .card-media {
+    position: relative; height: 230px; background: #1B2A23;
+    background-image: repeating-linear-gradient(135deg, #26362E 0 1px, transparent 1px 11px);
+    overflow: hidden;
+  }
+  .card-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .kind {
+    position: absolute; top: 16px; left: 18px; font-family: 'Space Mono', monospace;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.1em; color: #0D140F;
+    background: var(--c); padding: 6px 11px; border-radius: 6px;
+  }
+  .card-body { padding: 26px 26px 28px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+  .card-title { display: flex; align-items: baseline; gap: 12px; }
+  .num { font-family: 'Space Mono', monospace; font-size: 13px; color: #8FA398; }
+  .card-body h3 { font-size: 30px; font-weight: 900; letter-spacing: -0.02em; line-height: 1; }
+  .card-desc { font-size: 15px; line-height: 1.55; color: #8FA398; flex: 1; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag {
+    font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.1em;
+    color: #8FA398; border: 1px solid #26362E; padding: 5px 9px; border-radius: 6px;
+  }
+  .visit { font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; color: var(--c); margin-top: 2px; }
+
+  .cta { max-width: 1280px; margin: 0 auto; padding: 70px 40px 90px; }
+  .cta-box { border: 1px solid #26362E; border-radius: 24px; background: #14201B; padding: clamp(40px, 7vw, 90px) 40px; text-align: center; }
+  .cta-kicker { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.28em; color: #8FA398; }
+  .cta-box h2 { font-size: clamp(38px, 7vw, 90px); font-weight: 900; letter-spacing: -0.03em; line-height: 0.95; margin: 20px 0 26px; }
+  .cta-box p { font-size: 17px; line-height: 1.6; color: #8FA398; max-width: 520px; margin: 0 auto 32px; }
+
+  .foot-strips { display: flex; flex-wrap: wrap; border-top: 1px solid #26362E; font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: 0.14em; }
+  .strip { flex: 1; min-width: 170px; padding: 30px 34px; }
+  .s0 { background: #0E1512; color: #F3F1EA; font-weight: 700; }
+  .s1 { background: #B6F03A; color: #0D140F; }
+  .s2 { background: #B39CF0; color: #0D140F; }
+  .s3 { background: #5CD1E6; color: #0D140F; }
+  .foot-legal {
+    max-width: 1280px; margin: 0 auto; padding: 22px 40px 40px;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+    font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.12em; color: #8FA398;
+  }
+
+  ::selection { background: #B6F03A; color: #0D140F; }
+
+  @media (max-width: 640px) {
+    .nav, .hero, .work, .cta { padding-left: 22px; padding-right: 22px; }
+    .brand-tag { display: none; }
+    .nav-links { gap: 14px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
+    .card-link { transition: none; }
+  }
+</style>

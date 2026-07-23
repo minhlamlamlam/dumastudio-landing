@@ -1,254 +1,70 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Site from '../../components/Site.astro';
 
-const projects = [
-  {
-    name: 'Ça Goutte',
-    url: 'https://www.cagoutte.app',
-    description: 'AI assistant to manage your gout. Database of 1000+ foods, crisis tracking, medical export.',
-    logo: '/cagoutte-logo-final.png',
-    tagline: 'AI-powered gout tracking',
-  },
-  {
-    name: 'Resto1.Click',
-    url: 'https://resto1.click',
-    description: 'Professional website builder for restaurants — published in 10 minutes, no coding required.',
-    logo: '/resto1click-logo.png',
-    tagline: 'The platform built exclusively for restaurateurs',
-  },
-];
+const t = {
+  badge: 'DU MA · APP STUDIO · EST. 2024',
+  h1a: 'APPS WITH',
+  h1b: 'ATTITUDE',
+  intro:
+    "I’m a solo vibe coder. This isn’t a pitch deck — it’s the stuff I actually ship for the fun of it. A web app, a mobile app, and a mobile game.",
+  pills: ['WEB APP', 'MOBILE APP', 'MOBILE GAME'],
+  workTitle: 'SELECTED WORK',
+  workMeta: '2024–2026  /  (03)',
+  ctaKicker: 'HECHO PARA CREAR.',
+  ctaTitle1: 'MADE TO',
+  ctaTitle2: 'CREATE',
+  ctaText:
+    'No clients, no roadmap meetings. Just apps built the way I want them — and this is where they live.',
+  ctaBtn: 'dumastudio.app',
+  say: 'SAY HI',
+  work: 'WORK',
+  projects: [
+    {
+      n: '01',
+      name: 'Resto1Click',
+      kind: 'WEB APP',
+      accent: '#B6F03A',
+      href: 'https://resto1.click',
+      visit: 'VISIT resto1.click',
+      img: 'https://resto1.click/og-image.jpg',
+      desc:
+        'Build a restaurant website in under 10 minutes. No code, no agency — straight from your phone, live on Google the same day.',
+      tags: ['10-MIN SETUP', 'SEO-READY', 'QR MENU'],
+    },
+    {
+      n: '02',
+      name: 'Ça Goutte!',
+      kind: 'MOBILE APP',
+      accent: '#B39CF0',
+      href: 'https://www.cagoutte.app',
+      visit: 'VISIT cagoutte.app',
+      img: 'https://www.cagoutte.app/images/rebrand/screen-journal.webp',
+      imgPos: 'top center',
+      desc:
+        'Gout & purine tracking with a built-in AI coach. Log meals, water and flare-ups — and ask it anything before you eat.',
+      tags: ['AI COACH', '1000+ FOODS', 'iOS + ANDROID'],
+    },
+    {
+      n: '03',
+      name: 'Convoi',
+      kind: 'MOBILE GAME',
+      accent: '#5CD1E6',
+      href: 'https://www.convoi.games',
+      visit: 'VISIT convoi.games',
+      img: 'https://www.convoi.games/sans-avec-banner.jpg',
+      desc:
+        "The highway passengers’ game. Spot plates offline, radar the real cars around you, then challenge them to a duel.",
+      tags: ['OFFLINE PLAY', 'LIVE RADAR', 'CAR DUELS'],
+    },
+  ],
+};
 ---
 
 <Layout
-  title="Duma Studio - Mobile & Web Application Development"
-  description="Duma Studio builds innovative mobile and web applications. Discover our projects: Ça Goutte (AI health assistant), Resto1.Click (restaurant website builder)."
+  title="DU MA App Studio — Apps with attitude | Web, mobile & games"
+  description="Solo indie app studio. Resto1Click (restaurant website builder), Ça Goutte (AI health coach) and Convoi (mobile game) — apps built with attitude, shipped for fun."
   lang="en"
 >
-  <main class="relative">
-    <!-- Hero Section -->
-    <section
-      class="min-h-screen flex flex-col items-center justify-center px-6 py-20 relative overflow-hidden"
-    >
-      <!-- Animated gradient background -->
-      <div
-        class="absolute inset-0 -z-10 opacity-30 dark:opacity-20"
-        style="background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.3) 0%, transparent 50%);"
-      >
-      </div>
-
-      <!-- Logo with fade-in animation -->
-      <div class="mb-12 animate-fade-in">
-        <img
-          src="/dumastudio-logo-transp.png"
-          alt="Duma Studio Logo"
-          class="w-48 h-48 md:w-64 md:h-64 object-contain drop-shadow-2xl transition-transform duration-500 hover:scale-105"
-          width="256"
-          height="256"
-          loading="eager"
-          decoding="async"
-        />
-      </div>
-
-      <!-- Hero text -->
-      <div class="text-center max-w-4xl space-y-8 animate-fade-in-up">
-        <h1
-          class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-balance"
-        >
-          Duma Studio
-        </h1>
-        <p
-          class="text-xl md:text-2xl lg:text-3xl text-gray-600 dark:text-gray-400 font-light text-balance"
-        >
-          Mobile & Web Application Development
-        </p>
-        <p class="text-base md:text-lg text-gray-500 dark:text-gray-500 max-w-2xl mx-auto">
-          We craft minimalist, high-performance digital experiences
-          designed with the user in mind.
-        </p>
-      </div>
-
-      <!-- Scroll indicator -->
-      <div class="absolute bottom-10 animate-bounce">
-        <svg
-          class="w-6 h-6 text-gray-400"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-        </svg>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="min-h-screen flex items-center justify-center px-6 py-20" id="projects">
-      <div class="max-w-6xl w-full">
-        <h2
-          class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-16 opacity-0 scroll-reveal"
-        >
-          Our Projects
-        </h2>
-
-        <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
-          {
-            projects.map((project, index) => (
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="group block opacity-0 scroll-reveal"
-                style={`animation-delay: ${index * 150}ms`}
-              >
-                <div class="relative p-8 md:p-12 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-black/50 backdrop-blur-sm transition-all duration-500 hover:scale-105 hover:border-accent hover:shadow-2xl hover:shadow-accent/20">
-                  {/* Hover gradient effect */}
-                  <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/0 to-accent/0 group-hover:from-accent/5 group-hover:to-accent/10 transition-all duration-500 -z-10" />
-
-                  {/* Logo */}
-                  <div class="mb-6 flex items-center justify-center">
-                    <img
-                      src={project.logo}
-                      alt={`${project.name} logo`}
-                      class="h-16 w-auto object-contain transition-transform duration-500 group-hover:scale-110"
-                      loading="lazy"
-                    />
-                  </div>
-
-                  <h3 class="text-2xl md:text-3xl font-bold mb-2 group-hover:text-accent transition-colors text-center">
-                    {project.name}
-                  </h3>
-
-                  <p class="text-sm text-gray-500 dark:text-gray-500 mb-4 text-center font-medium">
-                    {project.tagline}
-                  </p>
-
-                  <p class="text-gray-600 dark:text-gray-400 text-base text-center">
-                    {project.description}
-                  </p>
-
-                  {/* Arrow icon */}
-                  <div class="mt-6 flex items-center justify-center text-accent opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <span class="mr-2">Discover</span>
-                    <svg
-                      class="w-5 h-5 transform group-hover:translate-x-2 transition-transform"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </a>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer with legal information -->
-    <footer class="border-t border-gray-200 dark:border-gray-800 py-12 px-6">
-      <div class="max-w-6xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-8 text-sm text-gray-600 dark:text-gray-400">
-          <!-- Company info -->
-          <div class="space-y-2">
-            <p class="font-semibold text-black dark:text-white mb-3">
-              Duma Studio
-            </p>
-            <p>VAT BE1028.727.857</p>
-          </div>
-
-          <!-- Contact -->
-          <div class="space-y-2">
-            <p class="font-semibold text-black dark:text-white mb-3">Contact</p>
-            <p>
-              <a
-                href="mailto:support@dumastudio.app"
-                class="hover:text-accent transition-colors"
-              >
-                support@dumastudio.app
-              </a>
-            </p>
-          </div>
-        </div>
-
-        <!-- Copyright -->
-        <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800 text-center text-sm text-gray-500">
-          <p>&copy; {new Date().getFullYear()} Duma Studio. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
-  </main>
+  <Site lang="en" altHref="/" altLabel="FR" t={t} />
 </Layout>
-
-<style>
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes fade-in-up {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fade-in {
-    animation: fade-in 1s ease-out forwards;
-  }
-
-  .animate-fade-in-up {
-    animation: fade-in-up 1s ease-out 0.3s forwards;
-    opacity: 0;
-  }
-
-  .scroll-reveal {
-    animation: fade-in-up 0.8s ease-out forwards;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    * {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
-  }
-</style>
-
-<script>
-  // Intersection Observer for scroll animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px',
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate-fade-in-up');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  document.querySelectorAll('.scroll-reveal').forEach((el) => {
-    observer.observe(el);
-  });
-</script>

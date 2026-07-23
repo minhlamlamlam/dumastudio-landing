@@ -3,33 +3,25 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --color-bg: 255 255 255;
-    --color-text: 0 0 0;
-    --color-muted: 107 114 128;
-  }
-
-  .dark {
-    --color-bg: 0 0 0;
-    --color-text: 255 255 255;
-    --color-muted: 156 163 175;
-  }
-
   * {
-    @apply transition-colors duration-300;
+    box-sizing: border-box;
   }
 
   html {
-    @apply scroll-smooth;
+    scroll-behavior: smooth;
   }
 
+  html,
   body {
-    @apply bg-white dark:bg-black text-black dark:text-white antialiased;
+    margin: 0;
+    padding: 0;
+    background: #0e1512;
+    color: #f3f1ea;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
-}
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  img {
+    -webkit-user-drag: none;
   }
 }
