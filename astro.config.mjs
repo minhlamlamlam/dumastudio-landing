@@ -13,7 +13,7 @@ export default defineConfig({
       },
     }),
   ],
-  site: 'https://duma.studio',
+  site: 'https://www.dumastudio.app',
   output: 'static',
   build: {
     inlineStylesheets: 'auto',

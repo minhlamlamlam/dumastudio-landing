@@ -19,25 +19,24 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'Organization',
-      '@id': 'https://duma.studio/#org',
+      '@id': 'https://www.dumastudio.app/#org',
       name: 'DU MA App Studio',
       alternateName: 'Duma Studio',
-      url: 'https://duma.studio/',
+      url: 'https://www.dumastudio.app/',
       logo: ogImage.toString(),
       email: 'support@dumastudio.app',
       foundingDate: '2024',
       slogan: 'Apps with attitude.',
       description:
         'Solo indie app studio building a web app, a mobile app and a mobile game — shipped for fun.',
-      sameAs: ['https://www.dumastudio.app/'],
     },
     {
       '@type': 'WebSite',
-      '@id': 'https://duma.studio/#website',
-      url: 'https://duma.studio/',
+      '@id': 'https://www.dumastudio.app/#website',
+      url: 'https://www.dumastudio.app/',
       name: 'DU MA App Studio',
       inLanguage: lang,
-      publisher: { '@id': 'https://duma.studio/#org' },
+      publisher: { '@id': 'https://www.dumastudio.app/#org' },
     },
     {
       '@type': 'CollectionPage',
@@ -46,15 +45,15 @@ const jsonLd = {
       name: title,
       description,
       inLanguage: lang,
-      isPartOf: { '@id': 'https://duma.studio/#website' },
-      about: { '@id': 'https://duma.studio/#org' },
+      isPartOf: { '@id': 'https://www.dumastudio.app/#website' },
+      about: { '@id': 'https://www.dumastudio.app/#org' },
       hasPart: [
         {
           '@type': 'SoftwareApplication',
           name: 'Resto1Click',
           applicationCategory: 'BusinessApplication',
           operatingSystem: 'Web',
-          url: 'https://resto1.click',
+          url: 'https://resto1click.com',
           description:
             'Build a restaurant website in under 10 minutes — no code, no agency, live on Google the same day.',
         },
