@@ -1,85 +1,60 @@
-# Duma Studio - Landing Page
+# DU MA App Studio — Landing
 
-Landing page ultra-minimaliste pour Duma Studio, développée avec Astro.
+Site vitrine de **DU MA App Studio** (« Apps with attitude »), bilingue FR/EN.
 
-## 🚀 Fonctionnalités
+- **Production :** https://www.dumastudio.app (aussi `dumastudio.app`, `duma.wtf`) — version anglaise sur `/en`
+- **Stack :** Astro 5 (sortie statique) + Tailwind 3, hébergé sur Vercel
 
-- Design minimaliste et moderne
-- Dark mode avec toggle fluide
-- Animations au scroll
-- Optimisé pour les performances (Lighthouse 95+)
-- SEO optimisé
-- Responsive mobile-first
+## État des lieux (octobre 2026)
 
-## 🛠️ Technologies
+**Design** — refonte d'après la maquette Claude Design « DU MA Refonte », direction **A · Kinetic**, palette **Nuit cobalt** (fond `#11121C`, accent ambre, cartes corail / lavande / menthe). Polices : Archivo (variante condensée pour les titres) et JetBrains Mono.
 
-- [Astro](https://astro.build) - Framework web moderne
-- [TypeScript](https://www.typescriptlang.org/) - Typage statique
-- [Tailwind CSS](https://tailwindcss.com/) - Framework CSS utilitaire
+**Structure de la page** (`src/components/Site.astro`) :
 
-## 📦 Installation
+1. Nav fixe (logo DU MA, lien Projets, bascule FR/EN)
+2. Hero « APPS WITH / ATTITUDE. » qui glisse au scroll
+3. Bandeau défilant incliné (slogans)
+4. Intro qui s'allume mot par mot au scroll
+5. Projets en cartes plein écran empilées
+6. « MADE TO CREATE. » qui grossit à l'arrivée
+7. Footer : logo DU MA, mentions légales, contact
+
+Les animations sont en JS natif (boucle `requestAnimationFrame` sur les éléments `data-fx`) et désactivées si `prefers-reduced-motion`.
+
+**Projets présentés :**
+
+| # | Projet | Type | URL |
+|---|--------|------|-----|
+| 01 | Resto1Click | Web app | https://resto1click.com |
+| 02 | Ça Goutte! | App mobile | https://www.cagoutte.app |
+| 03 | Convoi | Jeu mobile | https://www.convoi.games |
+
+**Textes :** un objet `t` par langue dans `src/pages/index.astro` (FR) et `src/pages/en/index.astro` (EN). Les slogans de marque restent en anglais dans les deux langues.
+
+**SEO / GEO** (`src/layouts/Layout.astro`) : URL canonique, hreflang fr/en/x-default, Open Graph / Twitter, JSON-LD (Organization, WebSite, CollectionPage avec chaque app). Sitemap généré par `@astrojs/sitemap`, référencé dans `public/robots.txt`. Domaine de référence : `site` dans `astro.config.mjs`.
+
+**Points ouverts :**
+
+- Dépendances : à jour en versions mineures. Majeures disponibles non appliquées (Astro 7, Tailwind 4, TypeScript 7). `npm audit` signale des failles dans des outils de build/dev (astro, esbuild, sharp…) — sans impact sur le site publié, qui est du HTML statique ; elles se corrigent avec la montée en Astro 7.
+- URL canonique de la page anglaise en `/en/` alors que hreflang utilise `/en`.
+- `public/panther.png` n'est plus utilisé.
+
+## Développement
 
 ```bash
-# Installer les dépendances
 npm install
-
-# Lancer le serveur de développement
-npm run dev
-
-# Build pour la production
-npm run build
-
-# Prévisualiser le build
-npm run preview
+npm run dev       # serveur local
+npm run build     # astro check + build dans dist/
+npm run preview   # prévisualiser le build
 ```
 
-## 🌐 Déploiement sur Vercel
+## Déploiement
 
-### Via l'interface Vercel
+L'intégration Git de Vercel déploie automatiquement en production à chaque push sur `main` : un `git push` suffit (inutile de lancer aussi `vercel deploy --prod`, sinon le déploiement est fait deux fois).
 
-1. Créer un compte sur [Vercel](https://vercel.com)
-2. Cliquer sur "Add New Project"
-3. Importer votre repository GitHub
-4. Vercel détectera automatiquement Astro
-5. Cliquer sur "Deploy"
-
-### Via CLI
-
-```bash
-# Installer Vercel CLI
-npm i -g vercel
-
-# Déployer
-vercel
-```
-
-## 🔗 Configuration du domaine Namecheap
-
-1. Aller sur Namecheap > Domain List > Manage
-2. Aller dans "Advanced DNS"
-3. Ajouter ces enregistrements :
-
-```
-Type: CNAME
-Host: www
-Value: cname.vercel-dns.com
-TTL: Automatic
-
-Type: A
-Host: @
-Value: 76.76.21.21
-TTL: Automatic
-```
-
-4. Dans Vercel, aller dans Settings > Domains
-5. Ajouter votre domaine
-6. Suivre les instructions de vérification
-
-## 📝 Mentions légales
+## Mentions légales
 
 - TVA BE1028.727.857
 - Contact : support@dumastudio.app
 
-## 📄 License
-
-© 2025 Duma Studio. Tous droits réservés.
+© 2024–2026 DU MA App Studio. Tous droits réservés.
