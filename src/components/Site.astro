@@ -43,7 +43,7 @@ const marqueeItems = Array.from({ length: 4 }, () => marquee).flat();
 <div class="duma">
   <header class="nav">
     <a href={lang === 'fr' ? '/' : '/en'} class="brand" aria-label="DU MA — App Studio">
-      <img src="/duma-white.png" alt="DU MA App Studio" width="28" height="22" />
+      <img src="/duma-white.png" alt="DU MA App Studio" width="52" height="40" />
       <span class="mono">APP&nbsp;STUDIO</span>
     </a>
     <nav class="nav-links mono" aria-label={lang === 'fr' ? 'Navigation principale' : 'Main navigation'}>
@@ -117,7 +117,7 @@ const marqueeItems = Array.from({ length: 4 }, () => marquee).flat();
   </section>
 
   <footer class="foot mono">
-    <div class="foot-brand"><div class="foot-spin" data-fx="spin" data-s="0.3"></div><span>{t.badge}</span></div>
+    <div class="foot-brand"><img src="/duma-white.png" alt="DU MA App Studio" width="93" height="72" class="foot-logo" loading="lazy" decoding="async" /><span>{t.badge}</span></div>
     <span>© {new Date().getFullYear()} DU MA APP STUDIO · TVA BE1028.727.857 · <a href="mailto:support@dumastudio.app" class="foot-mail">support@dumastudio.app</a></span>
   </footer>
 </div>
@@ -150,7 +150,6 @@ const marqueeItems = Array.from({ length: 4 }, () => marquee).flat();
             tf = `scale(${1 - t * 0.1})`; el.style.filter = `brightness(${1 - t * 0.5})`; break;
           }
           case 'grow': { const t = reduce ? 1 : cl((vh - pr().top) / (vh * 0.9)); tf = `scale(${0.5 + 0.5 * t})`; break; }
-          case 'spin': tf = `rotate(${sy * s}deg)`; break;
         }
         if (tf !== null) el.style.transform = tf;
         if (op !== null) el.style.opacity = String(op);
@@ -189,7 +188,7 @@ const marqueeItems = Array.from({ length: 4 }, () => marquee).flat();
     padding: 22px 32px; mix-blend-mode: difference; color: #fff;
   }
   .brand { display: flex; align-items: center; gap: 12px; font-size: 11px; }
-  .brand img { height: 22px; width: auto; display: block; }
+  .brand img { height: 40px; width: auto; display: block; }
   .nav-links { display: flex; gap: 28px; font-size: 11px; }
 
   .hero { height: 100vh; height: 100svh; position: relative; }
@@ -279,7 +278,7 @@ const marqueeItems = Array.from({ length: 4 }, () => marquee).flat();
     flex-wrap: wrap; gap: 20px; font-weight: 500; font-size: 11px; letter-spacing: .1em; color: var(--muted);
   }
   .foot-brand { display: flex; align-items: center; gap: 14px; }
-  .foot-spin { width: 56px; height: 56px; border-radius: 50%; border: 1.5px dashed var(--acc); flex: none; }
+  .foot-logo { height: 72px; width: auto; display: block; flex: none; }
   .foot-mail { color: var(--light); }
 
   ::selection { background: var(--acc); color: var(--dark); }
@@ -293,6 +292,7 @@ const marqueeItems = Array.from({ length: 4 }, () => marquee).flat();
   }
   @media (max-width: 640px) {
     .nav { padding: 18px 20px; }
+    .brand img { height: 32px; }
     .hero-in { padding: 0 20px 36px; }
     .hero h1 { font-size: 22vw; }
     .intro { padding-left: 20px; padding-right: 20px; }
