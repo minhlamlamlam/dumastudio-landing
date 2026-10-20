@@ -7,7 +7,6 @@ export default defineConfig({
   integrations: [
     tailwind(),
     sitemap({
-      filter: (page) => !page.includes('/demo-reservation'),
       i18n: {
         defaultLocale: 'fr',
         locales: { fr: 'fr', en: 'en' },
