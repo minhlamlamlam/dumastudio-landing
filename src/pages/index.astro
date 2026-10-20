@@ -3,27 +3,30 @@ import Layout from '../layouts/Layout.astro';
 import Site from '../components/Site.astro';
 
 const t = {
-  badge: 'DU MA · APP STUDIO · EST. 2024',
-  h1a: 'APPS WITH',
-  h1b: 'ATTITUDE',
-  intro:
-    "Je suis un vibe coder solo. Ce n'est pas un pitch deck — c'est ce que je ship vraiment, pour le plaisir. Une web app, une app mobile et un jeu mobile.",
-  pills: ['WEB APP', 'APP MOBILE', 'JEU MOBILE'],
-  workTitle: 'PROJETS SÉLECTIONNÉS',
-  workMeta: '2024–2026  /  (03)',
-  ctaKicker: 'HECHO PARA CREAR.',
-  ctaTitle1: 'MADE TO',
-  ctaTitle2: 'CREATE',
-  ctaText:
-    'Du vibe coding, une idée, une app. Construite par passion — elle vit ici.',
-  say: 'CONTACT',
+  badge: 'DU MA · APP STUDIO · EST. 2024',
+  h1a: 'Apps with',
+  h1b: 'Attitude.',
+  intro: [
+    'Je suis',
+    'un indie coder',
+    "qui utilise l'IA",
+    'pour shipper plus vite.',
+    "Ce n'est pas",
+    'un pitch deck —',
+    "c'est ce que",
+    'je ship vraiment,',
+    'pour le plaisir.',
+  ],
+  pills: ['WEB APP', 'APP MOBILE', 'JEU MOBILE'],
   work: 'PROJETS',
+  workTitle1: 'Projets',
+  workTitle2: 'sélectionnés',
+  workMeta: '2024–2026 / (03)',
   projects: [
     {
       n: '01',
       name: 'Resto1Click',
       kind: 'WEB APP',
-      accent: '#B6F03A',
       href: 'https://resto1.click',
       visit: 'VISITER resto1.click',
       img: 'https://resto1.click/og-image.jpg',
@@ -35,7 +38,6 @@ const t = {
       n: '02',
       name: 'Ça Goutte!',
       kind: 'APP MOBILE',
-      accent: '#B39CF0',
       href: 'https://www.cagoutte.app',
       visit: 'VISITER cagoutte.app',
       img: 'https://www.cagoutte.app/images/rebrand/screen-journal.webp',
@@ -48,7 +50,6 @@ const t = {
       n: '03',
       name: 'Convoi',
       kind: 'JEU MOBILE',
-      accent: '#5CD1E6',
       href: 'https://www.convoi.games',
       visit: 'VISITER convoi.games',
       img: 'https://www.convoi.games/sans-avec-banner.jpg',
@@ -57,6 +58,10 @@ const t = {
       tags: ['MODE HORS LIGNE', 'RADAR LIVE', 'DUELS'],
     },
   ],
+  ctaKicker: 'HECHO PARA CREAR.',
+  ctaTitle1: 'Made to',
+  ctaTitle2: 'create.',
+  ctaText: "Du code, de l'IA, une idée, une app. Construite par passion — elle vit ici.",
 };
 ---
 
