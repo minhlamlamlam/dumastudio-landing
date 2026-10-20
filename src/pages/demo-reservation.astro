@@ -1,0 +1,113 @@
+---
+// Demo of the Resto1Click booking widget (not linked, not indexed).
+// Remove once Minh has picked the widget looks.
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Démo widget de réservation Resto1Click</title>
+  </head>
+  <body style="margin:0">
+    <style is:global>
+      .r1d { --ink: #0a0a0a; --muted: #6b6b6b; --line: #e7e7e7; margin: 0; background: #fafafa; color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+      .r1d * { box-sizing: border-box; }
+      .r1d main { max-width: 1040px; margin: 0 auto; padding: 48px 20px 120px; }
+      .r1d .eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+      .r1d h1 { font-size: clamp(28px, 5vw, 40px); line-height: 1.1; letter-spacing: -.02em; margin: 10px 0 12px; }
+      .r1d .lead { max-width: 640px; color: var(--muted); font-size: 17px; line-height: 1.55; margin: 0; }
+      .r1d h2 { font-size: 22px; letter-spacing: -.01em; margin: 64px 0 6px; }
+      .r1d .sub { color: var(--muted); margin: 0 0 20px; font-size: 15px; line-height: 1.5; }
+      .r1d .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+      .r1d .card { border: 1px solid var(--line); border-radius: 16px; background: #fff; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+      .r1d .card.dark { background: #0a0a0a; border-color: #0a0a0a; color: #fafafa; }
+      .r1d .card.warm { background: #f6efe6; border-color: #eadfd0; }
+      .r1d .name { font-weight: 600; font-size: 15px; }
+      .r1d .desc { font-size: 13px; color: var(--muted); line-height: 1.45; margin-top: -8px; }
+      .r1d .card.dark .desc { color: #a3a3a3; }
+      .r1d .stage { min-height: 72px; display: flex; align-items: center; }
+      .r1d code { display: block; font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; background: #f4f4f4; color: #333; border-radius: 8px; padding: 10px 12px; overflow-x: auto; white-space: pre; }
+      .r1d .card.dark code { background: #1c1c1c; color: #d4d4d4; }
+      .r1d .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; align-items: start; }
+      .r1d .site { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: #fff; }
+      .r1d .site.dark { background: #111; border-color: #111; color: #fafafa; }
+      .r1d .site header { padding: 16px 20px; border-bottom: 1px solid var(--line); font-weight: 600; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+      .r1d .site.dark header { border-color: #262626; }
+      .r1d .site .body { padding: 16px; }
+      .r1d .site .label { font-size: 13px; color: var(--muted); margin: 0 0 12px; }
+      .r1d .own { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border: 1px solid currentColor; border-radius: 4px; color: inherit; text-decoration: none; font-size: 14px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+      .r1d .note { margin-top: 64px; padding: 20px; border-radius: 16px; background: #fff; border: 1px solid var(--line); font-size: 14px; line-height: 1.55; color: var(--muted); }
+      .r1d .note strong { color: var(--ink); }
+      @media (max-width: 640px) { .r1d main { padding-top: 32px; } .r1d h2 { margin-top: 48px; } }
+    </style>
+    <div class="r1d">
+      <main>
+        <p class="eyebrow">Démo · Resto1Click</p>
+        <h1>Le widget de réservation, en situation</h1>
+        <p class="lead">Toutes les déclinaisons que le restaurateur peut choisir, branchées sur le restaurant de test « Chez Minh ». Les réservations faites ici sont réelles : à annuler ensuite depuis le tableau de bord.</p>
+
+        <h2>1. Le bouton</h2>
+        <p class="sub">Sobre, avec une icône calendrier toujours identique pour être reconnaissable. Trois réglages : style, forme et couleur de marque.</p>
+        <div class="grid">
+          <div class="card">
+            <div class="name">Plein, par défaut</div>
+            <div class="desc">Noir, en pilule. Va sur tous les sites.</div>
+            <div class="stage"><script is:inline src="https://resto1click.com/widget.js" data-restaurant="chezminnv" data-mode="inline-button" async></script></div>
+            <code>data-mode="inline-button"</code>
+          </div>
+          <div class="card">
+            <div class="name">Contour</div>
+            <div class="desc">Plus discret, pour les sites déjà chargés.</div>
+            <div class="stage"><script is:inline src="https://resto1click.com/widget.js" data-restaurant="chezminnv" data-mode="inline-button" data-style="outline" async></script></div>
+            <code>data-style="outline"</code>
+          </div>
+          <div class="card warm">
+            <div class="name">Couleur de marque, coins arrondis</div>
+            <div class="desc">Reprend la couleur du restaurant, aussi dans le formulaire.</div>
+            <div class="stage"><script is:inline src="https://resto1click.com/widget.js" data-restaurant="chezminnv" data-mode="inline-button" data-color="#9a3412" data-shape="rounded" async></script></div>
+            <code>data-color="#9a3412"
+data-shape="rounded"</code>
+          </div>
+          <div class="card dark">
+            <div class="name">Thème sombre</div>
+            <div class="desc">Pour un site sombre : bouton clair, fenêtre de réservation sombre.</div>
+            <div class="stage"><script is:inline src="https://resto1click.com/widget.js" data-restaurant="chezminnv" data-mode="inline-button" data-theme="dark" async></script></div>
+            <code>data-theme="dark"</code>
+          </div>
+        </div>
+
+        <h2>2. Le formulaire dans une page</h2>
+        <p class="sub">Le formulaire complet à l'intérieur du site, par exemple sur la page « Réserver » ou « Contact ». Il s'adapte à la hauteur de son contenu et à la largeur de l'écran.</p>
+        <div class="two">
+          <div class="site">
+            <header><span>Bistrot clair</span><span style="font-weight:400;font-size:13px;color:#6b6b6b">thème clair · couleur #9a3412</span></header>
+            <div class="body">
+              <script is:inline src="https://resto1click.com/widget.js" data-restaurant="chezminnv" data-mode="inline" data-color="#9a3412" async></script>
+            </div>
+          </div>
+          <div class="site dark">
+            <header><span>Bar à vin sombre</span><span style="font-weight:400;font-size:13px;color:#a3a3a3">thème sombre · couleur #d4a373</span></header>
+            <div class="body">
+              <script is:inline src="https://resto1click.com/widget.js" data-restaurant="chezminnv" data-mode="inline" data-theme="dark" data-color="#d4a373" async></script>
+            </div>
+          </div>
+        </div>
+
+        <h2>3. Les boutons du site</h2>
+        <p class="sub">Le restaurateur garde ses propres boutons : il leur ajoute <strong>data-r1c-open</strong> et ils ouvrent la même fenêtre.</p>
+        <div class="site" style="max-width:520px">
+          <header><span>Mon restaurant</span><a class="own" href="#" data-r1c-open>Réserver</a></header>
+        </div>
+
+        <div class="note">
+          <strong>4. Le bouton flottant</strong>, en bas à droite de cette page : c'est le format par défaut, présent sur toutes les pages du site. Sur téléphone, la fenêtre s'ouvre en plein écran.
+          <br /><br />
+          <strong>Reconnaissable partout :</strong> même icône calendrier, même fenêtre sobre, et la mention « Réservation propulsée par Resto1Click » avec notre logo en pied de formulaire.
+        </div>
+      </main>
+    </div>
+    <script is:inline src="https://resto1click.com/widget.js" data-restaurant="chezminnv" async></script>
+  </body>
+</html>
